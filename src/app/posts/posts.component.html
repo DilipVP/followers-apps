@@ -1,0 +1,25 @@
+<div class="card">
+<div class="card-header">
+<input 
+    (keyup.enter)="createPost(title)" #title   
+type="text" class="form-control" (blur)="clickedOut()" (click)="clickedIn()">
+<button 
+    (click)="getPost(title)" id="getbutton"  class="btn btn-default">Get By ID</button>
+</div>
+<div *ngIf="!focus && clicked && enteredid==''" class="card-body alert alert-danger alert-dismissible">please enter valid ID
+
+</div>
+    <div *ngIf="clicked && postforid.title!=null && !focus" class="card-body alert alert-light">{{postforid.id}} {{postforid.title}}</div>
+ <div *ngIf="clicked && errormsg!=null && !focus" class=" card-body alert alert-danger .alert-dismissible">{{errormsg}}</div>
+<div class="card-body">
+<ul class="list-group">
+    <li class="list-group-item" 
+   *ngFor ="let post of posts">
+   <button 
+    (click)="updatePost(post)" class="btn btn-default btn-sm">Update</button>
+    <button 
+    (click)="deletePost(post)" class="btn btn-default btn-sm">Delete</button>
+    {{post.id}} {{post.title}}</li>
+</ul>
+</div>
+</div>

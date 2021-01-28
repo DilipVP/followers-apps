@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+        <ng-content select=".heading"></ng-content>
+    </div>
+    <div class="card-body">
+        <ng-content select=".body"></ng-content>
+        <div *ngIf="courses.length>0; then courseslist else nocourses"> </div>
+            <ng-template #courseslist>
+                <h4>List of Courses are:</h4>
+                <ul>
+                <li *ngFor="let course of courses">{{course.name}}
+                    <button (click)="onRemove(course)">Remove</button>
+                    <button (click)="onChange(course)">Change</button>
+                </li>
+                
+            </ul>
+            
+        </ng-template>
+            <ng-template #nocourses><h4>no courses available!</h4></ng-template>   
+            <button (click)="onAdd()">Add</button>    
+    </div>
+    
+</div>    

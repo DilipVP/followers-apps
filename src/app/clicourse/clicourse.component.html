@@ -1,0 +1,39 @@
+<h1>{{Title}}</h1>
+<!--Or-->
+<h1 [textContent]="Title"></h1>
+<ul>
+    <li *ngFor="let author of Authors">{{author.name}}</li>
+</ul>
+<table>
+    <tr>
+        <td [attr.colspan]="colSpan">Two Col Span</td>
+    </tr>
+</table>
+<div (click)="onDivClicked()">
+<button (click)="onSave($event)" class="btn btn-primary" [style.backgroundColor]="isActive ? 'blue':'grey'">Save</button>
+</div>
+
+<Br><hr>
+    <input [(ngModel)]="email" (keyup.enter)="onKeyUp()" type="text" placeholder="Enter keyup event & Two way Binding">
+<Br><hr>
+
+<table>
+    <tr>
+        <td><favorite [likesCount]="post.likesCount" [isFavorite] = "post.isFavorite" (change) = "onFavoriteChanged($event)"></favorite></td>
+        <td>{{course.Title | uppercase | lowercase}}</td>
+       <td>{{course.students | number}}</td>
+      <td>{{course.rating | number:'2.1-1'}}</td>
+         <td>{{course.price | currency:'INR':'symbol':'3.2-2'}}</td>
+       <td>{{course.releaseDate | date:'dd-MM-YYYY'}}</td> 
+    </tr>
+</table>
+
+<Br><hr>
+     {{text|summary:40}}
+
+     <Br><hr>
+        <input type="text" [(ngModel)]="titlestring">
+    <br><hr>
+        {{titlestring|titleCase}}
+
+    <br><hr>
